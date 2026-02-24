@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(120deg, #4caf50, #81c784);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  margin-top: 120px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+p {
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: #2e7d32;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #c8e6c9;
+}
+
+footer {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+}
