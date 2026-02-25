@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nodedb-app
+spec:
+  # 2 Pods should exist at all times.
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-db-app
+        image: meadarshraj/kube-demo:4.0
+        imagePullPolicy: IfNotPresent
+      - name: mongo-db
+        image: mongo
+        imagePullPolicy: IfNotPresent
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  # Unique key of the Service instance
+  name: service-node-deployment
+spec:
+  ports:
+    # Accept traffic sent to port 80
+    - name: http
+      port: 3000
+      targetPort: 3000
+  selector:
+    # Loadbalance traffic across Pods matching
+    # this label selector
+    app: node-app
+  type: LoadBalancer
